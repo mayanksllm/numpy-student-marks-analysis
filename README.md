@@ -1,79 +1,58 @@
-# Student Marks Performance Analysis using NumPy
+# Data Science Bootcamp Assignments
 
-A 5-stage vectorized numerical analysis pipeline analyzing 10 students across 5 subjects using high-performance NumPy array operations.
-
-## 📌 Project Overview
-
-This project demonstrates core numerical computing techniques using NumPy in Python. It simulates academic performance data for 10 students across 5 subjects and executes an end-to-end analytics workflow leveraging vectorization, statistical aggregations, indexing, and Boolean masking.
+A structured multi-day curriculum repository covering end-to-end numerical computation, data cleaning pipelines, exploratory data analysis, and reporting.
 
 ---
 
-## 🚀 Pipeline Tasks
+## 📁 Repository Structure
 
-| Stage | Task Name | Description | Key NumPy Methods / Operations |
-| :---: | :--- | :--- | :--- |
-| **1** | **Marks Matrix Generation** | Generates a 10×5 matrix of marks (0–100) using a seeded pseudo-random generator for reproducibility. | `np.random.default_rng(seed=42)`, `rng.integers()` |
-| **2** | **Student Performance Calculation** | Calculates total marks and percentage for each individual student across all 5 subjects. | `np.sum(axis=1)`, vectorized division & multiplication |
-| **3** | **Subject-wise Statistical Analysis** | Computes average score (mean) and variance/spread (standard deviation) for each subject. | `np.mean(axis=0)`, `np.std(axis=0)` |
-| **4** | **Topper Identification** | Finds the highest score and the index of the highest-scoring student for each subject. | `np.max(axis=0)`, `np.argmax(axis=0)` |
-| **5** | **Pass/Fail Classification** | Classifies students as passed only if score is $\ge 40$ in all subjects using Boolean masking. | Boolean indexing (`>=`), `np.all(axis=1)`, `np.where()` |
+- **[`Day_01_NumPy/`](file:///Day_01_NumPy/)**: Vectorized Student Performance Analysis (5-task marks evaluation, argmax toppers, Boolean masking).
+  - [`Day_01_NumPy/day1_numpy_analysis.py`](file:///Day_01_NumPy/day1_numpy_analysis.py): Vectorized Python script implementing the 5-stage numerical pipeline.
+  - [`Day_01_NumPy/README.md`](file:///Day_01_NumPy/README.md): Detailed task breakdown, statistical aggregations, and sample output.
+- **[`Day_02_Pandas/`](file:///Day_02_Pandas/)**: Data Cleaning, Audit Logging, GroupBy Aggregations, Pivot Tables.
+  - [`Day_02_Pandas/day2_cleaning.ipynb`](file:///Day_02_Pandas/day2_cleaning.ipynb): Interactive Jupyter Notebook fixing 6+ data anomalies, executing aggregations, and pivoting revenue metrics.
+  - [`Day_02_Pandas/cleaned_data.csv`](file:///Day_02_Pandas/cleaned_data.csv): Fully sanitized, schema-consistent exported dataset.
 
 ---
 
-## 🛠️ Requirements & Installation
+## 🛠️ Environment Setup
 
-- Python 3.8+
-- NumPy $\ge$ 1.24.0
+Install the required dependencies across all modules:
 
-Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+### Dependencies
+- `numpy>=1.24.0`
+- `pandas>=2.0.0`
 
 ---
 
 ## ▶️ Execution Instructions
 
-Run the analysis pipeline directly from your terminal:
-
+### Day 1: NumPy Performance Analysis
+Navigate to the root directory and run the vectorized student performance script:
 ```bash
-python main.py
+python Day_01_NumPy/day1_numpy_analysis.py
+```
+
+### Day 2: Pandas Data Cleaning & Aggregations
+Open and run the notebook in Jupyter Notebook, JupyterLab, or VS Code / Antigravity IDE:
+```bash
+jupyter notebook Day_02_Pandas/day2_cleaning.ipynb
+```
+Or view the processed dataset directly:
+```bash
+cat Day_02_Pandas/cleaned_data.csv
 ```
 
 ---
 
-## 📊 Sample Output Preview
+## 📊 Day 2: Data Quality Summary
 
-```text
-==========================================
-TASK 1: MARKS MATRIX (10 Students x 5 Subjects)
-==========================================
-[[...]]
-
-==========================================
-TASK 2: STUDENT PERFORMANCE
-==========================================
-Student 00 -> Total Marks: .../500 | Percentage: ...%
-...
-
-==========================================
-TASK 3: SUBJECT-WISE STATISTICAL ANALYSIS
-==========================================
-Subject 0 -> Average Marks: ... | Standard Deviation: ...
-...
-
-==========================================
-TASK 4: SUBJECT TOPPERS
-==========================================
-Subject 0 -> Highest Marks: ... (Secured by Student ...)
-...
-
-==========================================
-TASK 5: PASS / FAIL CLASSIFICATION (Threshold >= 40)
-==========================================
-Total Students Passed : ...
-Passed Student Indices: [...]
-Total Students Failed : ...
-Failed Student Indices: [...]
-==========================================
-```
+1. The original dataset contained 11 records plagued by duplicates, mixed date structures, and negative values.
+2. Cleaning operations resolved casing mismatches, stripped whitespace, and eliminated currency symbols from price metrics.
+3. Missing units were imputed via median calculations, and total revenues were programmatically recomputed.
+4. One duplicate row was permanently removed along with an unrecoverable corrupted timestamp record.
+5. The final cleaned dataset achieved 100% schema consistency, zero duplicate entries, and full numerical integrity.

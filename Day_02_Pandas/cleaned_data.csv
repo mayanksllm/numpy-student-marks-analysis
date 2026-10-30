@@ -1,0 +1,10 @@
+Order_ID,Order_Date,Region,Product_Category,Units_Sold,Unit_Price,Total_Revenue
+1001,2026-01-15,North,Electronics,5.0,120.0,600.0
+1002,2026-01-15,South,Furniture,2.0,150.0,300.0
+1003,2026-01-17,East,Office Supplies,10.0,15.5,155.0
+1004,2026-01-18,West,Electronics,5.5,120.0,660.0
+1005,2026-01-19,North,Furniture,4.0,150.0,600.0
+1006,2026-01-20,South,Office Supplies,5.5,20.0,110.0
+1007,2026-01-21,East,Electronics,8.0,120.0,960.0
+1009,2026-01-23,North,Office Supplies,12.0,12.5,150.0
+1010,2026-01-24,South,Electronics,6.0,120.0,720.0
