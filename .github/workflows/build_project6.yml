@@ -1,0 +1,39 @@
+name: Build Project 6 EV Charging Artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Project_06_EV_Charging_Analyser/build_ev_project.py'
+
+jobs:
+  build-project6:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy matplotlib seaborn scikit-learn folium
+
+      - name: Execute Project 6 builder
+        run: |
+          cd Project_06_EV_Charging_Analyser
+          python build_ev_project.py
+
+      - name: Commit and push generated CSVs, PNGs, Notebook, and Map
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Project_06_EV_Charging_Analyser/
+          git commit -m "feat: auto-generate Project 6 datasets, 300-DPI charts, notebook, and map" || exit 0
+          git push
