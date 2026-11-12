@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EV Charging Station Utilisation & Expansion Map - Jodhpur</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        #map { width: 100vw; height: 100vh; }
+        .legend {
+            background: white; padding: 12px 16px; border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2); line-height: 1.6; font-size: 13px;
+        }
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var map = L.map('map').setView([26.2750, 73.0150], 12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO',
+        maxZoom: 19
+    }).addTo(map);
+
+    var stations = [
+        {name: "EV-Station-C", loc: "Paota Bus & Transit Hub", lat: 26.2981, lon: 73.0365, chargers: 3, sessions: 888, energy: 38214.5, util: 90.34, tier: "Over-Utilised (Expansion Needed)", color: "#d9534f"},
+        {name: "EV-Station-A", loc: "Shastri Nagar Tech Park", lat: 26.2712, lon: 73.0089, chargers: 4, sessions: 918, energy: 39412.8, util: 70.02, tier: "Over-Utilised (Expansion Needed)", color: "#d9534f"},
+        {name: "EV-Station-B", loc: "Sardarpura Central Market", lat: 26.2804, lon: 73.0118, chargers: 6, sessions: 764, energy: 32890.2, util: 38.15, tier: "Optimal Utilisation", color: "#f0ad4e"},
+        {name: "EV-Station-E", loc: "Mandore Industrial Zone", lat: 26.3250, lon: 73.0420, chargers: 6, sessions: 464, energy: 19845.6, util: 23.21, tier: "Under-Utilised (Off-Peak Promo)", color: "#5cb85c"},
+        {name: "EV-Station-D", loc: "NH-62 Highway Plaza", lat: 26.2245, lon: 72.9760, chargers: 8, sessions: 567, energy: 24510.9, util: 21.60, tier: "Under-Utilised (Off-Peak Promo)", color: "#5cb85c"}
+    ];
+
+    stations.forEach(function(s) {
+        L.circleMarker([s.lat, s.lon], {
+            radius: 10 + (s.util / 6),
+            fillColor: s.color,
+            color: "#222",
+            weight: 1.5,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map).bindPopup(
+            "<b>" + s.name + "</b><br>" +
+            "<i>" + s.loc + "</i><hr style='margin:4px 0'>" +
+            "<b>Cluster Tier:</b> " + s.tier + "<br>" +
+            "<b>Utilisation Rate:</b> " + s.util + "%<br>" +
+            "<b>Installed Chargers:</b> " + s.chargers + "<br>" +
+            "<b>30-Day Sessions:</b> " + s.sessions + "<br>" +
+            "<b>Energy Delivered:</b> " + s.energy.toLocaleString() + " kWh"
+        );
+    });
+
+    var proposed = [
+        {name: "Recommended Site 1: Airport Road Junction", lat: 26.2520, lon: 73.0480, desc: "High residential commuter density; relieves Paota & Ratanada congestion."},
+        {name: "Recommended Site 2: AIIMS Basni Medical Corridor", lat: 26.2410, lon: 73.0050, desc: "High commercial cab/fleet dwell time; ideal for 4x DC Fast (50kW) bays."}
+    ];
+
+    proposed.forEach(function(p) {
+        L.circleMarker([p.lat, p.lon], {
+            radius: 13,
+            fillColor: "#0275d8",
+            color: "#fff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.9
+        }).addTo(map).bindPopup(
+            "<b>⚡ " + p.name + "</b><hr style='margin:4px 0'>" + p.desc
+        );
+    });
+
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function(map) {
+        var div = L.DomUtil.create('div', 'legend');
+        div.innerHTML = '<b>EV Station Utilisation Tiers</b><br>' +
+            '<span class="dot" style="background:#d9534f"></span> Over-Utilised (>65%)<br>' +
+            '<span class="dot" style="background:#f0ad4e"></span> Optimal (35%–65%)<br>' +
+            '<span class="dot" style="background:#5cb85c"></span> Under-Utilised (<35%)<br>' +
+            '<span class="dot" style="background:#0275d8"></span> Recommended New Site';
+        return div;
+    };
+    legend.addTo(map);
+</script>
+</body>
+</html>

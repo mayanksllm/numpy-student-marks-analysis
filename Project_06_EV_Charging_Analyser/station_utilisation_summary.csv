@@ -1,0 +1,6 @@
+station,location,latitude,longitude,total_chargers,total_sessions,total_energy_kwh,avg_duration_min,avg_power_kw,utilisation_rate_%,cluster,utilisation_tier
+EV-Station-C,Paota Bus & Transit Hub,26.2981,73.0365,3,888,43619.15,98.88063063063063,45.84088963963964,90.34,2,Over-Utilised (Expansion Needed)
+EV-Station-A,Shastri Nagar Tech Park,26.2712,73.0089,4,918,45211.33,98.85076252723312,46.41406318082789,70.02,2,Over-Utilised (Expansion Needed)
+EV-Station-B,Sardarpura Central Market,26.2804,73.0118,6,764,37042.49,97.07722513089006,46.596191099476435,38.15,0,Optimal Utilisation
+EV-Station-E,Mandore Industrial Zone,26.325,73.042,6,464,22645.63,97.24137931034483,45.496012931034485,23.21,1,Under-Utilised (Off-Peak Promo)
+EV-Station-D,NH-62 Highway Plaza,26.2245,72.976,8,567,27573.52,98.76543209876543,45.06871252204586,21.6,1,Under-Utilised (Off-Peak Promo)
