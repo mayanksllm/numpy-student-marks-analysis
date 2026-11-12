@@ -76,7 +76,75 @@ jupyter notebook Day_03_Visualizations/day3_eda_visualizations.ipynb
 ## 📊 Quality & Analytical Summaries
 
 ### Day 2: Data Quality Summary
+1. The original dataset contained 11 records plagued by# Data Science Bootcamp Assignments
+
+Install the required dependencies across all modules:
+```bash
+pip install -r requirements.txt
+```
+
+### Dependencies
+- `numpy>=1.24.0`
+- `pandas>=2.0.0`
+- `matplotlib>=3.7.0`
+- `seaborn>=0.12.0`
+
+---
+
+## 🚀 Execution Instructions
+
+### Day 1: NumPy Performance Analysis
+Navigate to the root directory and run the vectorized student performance script:
+```bash
+python Day_01_NumPy/day1_numpy_analysis.py
+```
+
+### Day 2: Pandas Data Cleaning & Aggregations
+Open and run the notebook in Jupyter Notebook, JupyterLab, or VS Code / Antigravity IDE:
+```bash
+cd Day_02_Pandas
+cat Day_02_Pandas/cleaned_data.csv
+```
+Or inspect the cleaned dataset directly:
+```bash
+cat Day_02_Pandas/cleaned_data.csv
+```
+
+### Day 3: EDA & Data Visualizations
+Run the automated visualization script to regenerate all charts, notebook, and report:
+```bash
+cd Day_03_Visualizations
+python day3_visualizations.py
+```
+
+Or explore the notebook interactively:
+```bash
+jupyter notebook Day_03_Visualizations/day3_eda_visualizations.ipynb
+```
+
+---
+
+## 📊 Quality & Analytical Summaries
+
+### Day 2: Data Quality Summary
 1. The original dataset contained 11 records plagued by duplicates, mixed date structures, and negative values.
+2. Cleaning operations resolved casing mismatches, stripped whitespace, and eliminated currency symbols from price metrics.
+3. Missing units were imputed via median calculations, and total revenues were programmatically recomputed.
+4. One duplicate row was permanently removed along with an unrecoverable corrupted timestamp record.
+5. The final cleaned dataset achieved 100% schema consistency, zero duplicate entries, and full numerical integrity.
+
+### Day 3: Executive Analytical Summary
+1. **Revenue Concentration in High-Unit-Price Categories**: Right-skewed distribution where high-ticket categories drive key margin performance.
+2. **Temporal Sales Spikes**: Mid-month promotion windows accounted for over 40% of total observed transaction volumes.
+3. **Data Integrity Metrics**: All post-processing datasets maintained zero nulls across critical schema boundaries.
+
+---
+
+## ⚡ Mini Project 6: EV Charging Station Utilisation Analyser (`Project_06_EV_Charging_Analyser/`)
+- **Live Interactive Geospatial Map:** [View Station Cluster Map](https://mayanksllm.github.io/numpy-student-marks-analysis/Project_06_EV_Charging_Analyser/)
+- **Jupyter Notebook:** [`EV_Charging_Station_Analyser.ipynb`](Project_06_EV_Charging_Analyser/EV_Charging_Station_Analyser.ipynb)
+- **Interactive Web App:** [`app.py`](Project_06_EV_Charging_Analyser/app.py) (Streamlit Dashboard & Demand Simulator)
+- **Datasets:** `ev_charging_raw_dataset.csv` (3,604 raw records) & `cleaned_ev_sessions.csv` (3,601 clean records) duplicates, mixed date structures, and negative values.
 2. Cleaning operations resolved casing mismatches, stripped whitespace, and eliminated currency symbols from price metrics.
 3. Missing units were imputed via median calculations, and total revenues were programmatically recomputed.
 4. One duplicate row was permanently removed along with an unrecoverable corrupted timestamp record.
